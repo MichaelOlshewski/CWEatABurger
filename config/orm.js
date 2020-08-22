@@ -1,4 +1,3 @@
-"use strict"
 const con = require('./connection')
 printQuestionMarks = () => {
     const arr = []
