@@ -1,20 +1,14 @@
 "use strict"
-
 const con = require('./connection')
-
 printQuestionMarks = () => {
     const arr = []
-
     for (let i = 0; i < Number; i++) {
         arr.push('?')
     }
-
     return arr.toString()
 }
-
 objToSql = (ob) => {
     const arr = []
-
     for (const key in ob) {
         const arr = []
         if (Object.hasOwnProperty.call(ob, key)) {
@@ -24,10 +18,8 @@ objToSql = (ob) => {
             arr.push(key + "=" + value)
         }
     }
-
     return arr.toString()
 }
-
 const orm = {
     selectAll: (tableInput, cb) => {
         let queryString = 'SELECT * FROM ' + tableInput + ";"
