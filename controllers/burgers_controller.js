@@ -1,8 +1,8 @@
 const express = require('express')
-const app = express()
-const burger = require('../server')
+const router = express.Router()
+const burger = require('../server.js')
 
-app.get('/', (req, res) => {
+router.get('/', (req, res) => {
     burger.selectAll((data) => {
         const burgerObj = {
             burger: data
@@ -12,13 +12,13 @@ app.get('/', (req, res) => {
     })
 })
 
-app.post('/api/burgers', (req, res) => {
+router.post('/api/burgers', (req, res) => {
     burger.create(["name", "devour"], [req.body.name, req.body.devour], (result) => {
         res.json({ id: result.insertId})
     })
 })
 
-app.put('/api/burgers/:id', (req, res) => {
+router.put('/api/burgers/:id', (req, res) => {
     const cond = "id = " + req.params.id
     console.log("Condition: ", cond)
     burger.update({
@@ -35,7 +35,7 @@ app.put('/api/burgers/:id', (req, res) => {
     )
 })
 
-app.delete('/api/burgers/:id', (req, res) => {
+router.delete('/api/burgers/:id', (req, res) => {
     const cond = "id + " + req.params.id
     burger.delete(cond, (result) => {
         if (result.affectedRows === 0) {
@@ -46,4 +46,4 @@ app.delete('/api/burgers/:id', (req, res) => {
     })
 })
 
-module.exports = app
+module.exports = router
