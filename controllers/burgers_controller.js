@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const burger = require('../server.js')
+const burger = require('../models/burger.js')
 
 router.get('/', (req, res) => {
     burger.selectAll((data) => {
@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 })
 
 router.post('/api/burgers', (req, res) => {
-    burger.create(["name", "devour"], [req.body.name, req.body.devour], (result) => {
+    burger.create(["name", "devour"], [req.body.name, req.body.devoured], (result) => {
         res.json({ id: result.insertId})
     })
 })
