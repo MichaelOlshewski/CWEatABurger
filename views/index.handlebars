@@ -3,19 +3,19 @@
 <h2>Burgers that need to be eaten!</h2>
 
 <ul>
-    {{#each burger}}
-        {{#if devoured}}
+    {{#each burgers}}
+        {{#unless isDevoured}}
             {{> burger-block devoured=false}}
-        {{/if}}
+        {{/unless}}
     {{/each}}
 </ul>
 
 <h2>Burgers that have been eaten!</h2>
 
 <ul>
-    {{#each burger}}
-        {{#if devoured}}
-            {{> burger-block devoured=false}}
+    {{#each burgers}}
+        {{#if isDevoured}}
+            {{> burger-block devoured=true}}
         {{/if}}
     {{/each}}
 </ul>

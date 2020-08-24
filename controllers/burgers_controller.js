@@ -13,16 +13,18 @@ router.get('/', (req, res) => {
 })
 
 router.post('/api/burgers', (req, res) => {
-    burger.create(["name", "devour"], [req.body.name, req.body.devoured], (result) => {
+    console.log(req.body)
+    burger.create(["burger_name", "isDevoured"], [req.body.burger_name, req.body.devoured], (result) => {
         res.json({ id: result.insertId})
     })
 })
 
 router.put('/api/burgers/:id', (req, res) => {
+    console.log(req.body)
     let cond = "id = " + req.params.id
     console.log("condition: ", cond)
     burger.update({
-        devoured: req.body.devoured
+        isDevoured: req.body.devoured
     }, cond, (result) => {
         if (result.changedRows == 0) {
             return res.status(404).end()
