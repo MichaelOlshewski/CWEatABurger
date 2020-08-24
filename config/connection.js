@@ -1,19 +1,19 @@
 const mysql = require('mysql')
 
-const con = mysql.createConnection({
-    host: 'qn0cquuabmqczee2.cbetxkdyhwsb.us-east-1.rds.amazonaws.com	',
+const connection = mysql.createConnection({
+    host: 'localhost',
     port: 3306,
-    user: 'wlrd6d7r7ed7bz5a',
-    password: 'o4sse9ksh8144q8y',
-    database: 'yugh9s8qlcdw006f'
+    user: 'root',
+    password: 'MOlsh2017',
+    database: 'burgers_db'
 })
 
-con.connect((err) => {
+connection.connect((err) => {
     if (err) {
         console.error(`There was an error connecting to ${con[4]}`, err.stack)
         return
     }
-    console.log(`Connected with ID ${con.threadId}`)
+    console.log(`Connected with ID ${connection.threadId}`)
 })
 
-module.exports = con
+module.exports = connection

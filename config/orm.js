@@ -1,55 +1,73 @@
-const con = require('./connection')
+const connection = require('./connection')
+
 printQuestionMarks = (num) => {
-    const arr = []
-    for (let i = 0; i < num; i++) {
+    let arr = []
+    for (var i = 0; i < num; i++) {
         arr.push('?')
     }
     return arr.toString()
 }
+
 objToSql = (ob) => {
-    const arr = []
-    for (const key in ob) {
-        const arr = []
+    let arr = []
+    for (var key in ob) {
+        var val = ob[key]
         if (Object.hasOwnProperty.call(ob, key)) {
-            if (typeof value === "string" && value.indexOf(' ') >= 0) {
-                value = "'" + value + "'"
+            if (typeof val === "string" && val.indexOf(' ') >= 0) {
+                val = "'" + val + "'"
             }
-            arr.push(key + "=" + value)
+            arr.push(key + "=" + val)
         }
     }
     return arr.toString()
 }
+
 const orm = {
     selectAll: (tableInput, cb) => {
-        let queryString = 'SELECT * FROM ' + tableInput + ";"
-        con.query(queryString, (err, res) => {
+        let queryString = "SELECT * FROM " + tableInput + ";"
+        connection.query(queryString, (err, result) => {
             if (err) throw err
-            cb(res)
+            cb(result)
         })
     },
-    create: (table, cols, vals, cb) => {
-        let queryString = "INSERT INTO " + table + " (" + cols.toString() + ") " + "VALUES (" + printQuestionMarks(vals.length) + ")"
+    create: (table, cols, vals,cb) => {
+        let queryString = "INSERT INTO " + table
+        queryString += " ("
+        queryString += cols.toString()
+        queryString += ") "
+        queryString += "VALUES ("
+        queryString += printQuestionMarks(vals.length)
+        queryString += ") "
+
         console.log(queryString)
 
-        con.query(queryString, vals, (err, res) => {
+        connection.query(queryString, vals, (err, result) => {
             if (err) throw err
-            cb(res)
+            cb(result)
         })
     },
     update: (table, objColVals, cond, cb) => {
-        let queryString = "UPDATE " + table + " SET " + objToSql(objColVals) + " WHERE " + cond
+        let queryString = "UPDATE " + table
+        queryString += " SET "
+        queryString += objToSql(objColVals)
+        queryString += " WHERE "
+        queryString += cond
+
         console.log(queryString)
-        con.query(queryString, (err, res) => {
+
+        connection.query(queryString, (err, result) => {
             if (err) throw err
-            cb(res)
+            cb(result)
         })
     },
     delete: (table, cond, cb) => {
-        let queryString = "DELETE FROM " + table + " WHERE " + cond
-        console.log(queryString)
-        con.query(queryString, (err, res) => {
+        let queryString = "DELETE FROM " + table
+        queryString += " WHERE "
+        queryString += cond
+
+        connection.query(queryString, (err, result) => {
             if (err) throw err
-            cb(res)
+            cb(result)
         })
     }
 }
