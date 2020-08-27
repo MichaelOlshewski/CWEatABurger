@@ -14,7 +14,15 @@ First you need to clone the repository by running `git clone git@github.com:Mich
 <hr>
 
 ## __How To Use__
-Once you have installed all required packages using the previous steps, then you can run either `npm start` to get the web server running and view the webpage, or you can run `npm run dev` to get the development server running that utilizes `nodemon` to restart the server on file change. Please note that you will need to have a MySQL server running prior to starting the server. You can use the `schema.sql` and `seeds.sql` inside of `/db` to set up the database, tables, and columns up prior to running the application.
+Once you have installed all required packages using the previous steps, then you can run either `npm start` to get the web server running and view the webpage, or you can run `npm run dev` to get the development server running that utilizes `nodemon` to restart the server on file change. Please note that you will need to have a MySQL server running prior to starting the server. You can use the `schema.sql` and `seeds.sql` inside of `/db` to set up the database, tables, and columns up prior to running the application. After setting up your MySQL database and installing all required dependencies, you will also need to create a `.env` file in the applications main directory and set the following variables inside of that file (if you are running a local MySQL server and you use the schema.sql and seeds.sql, you can leave most settings alone, just put your username and password in):
+
+```
+HOST=localhost
+PORT=3306
+USER=CHANGEME
+PASS=CHANGEME
+DATABASE=burgers_db
+```
 
 <hr>
 
