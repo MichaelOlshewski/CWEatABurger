@@ -1,6 +1,8 @@
 
 # __*Eat Da Burger!*__ ![GitHub](https://img.shields.io/github/license/MichaelOlshewski/CWEatABurger)
 
+![index.handlebars](img/indexPicture.png)
+
 ## __Description__
 Eat Da Burger! is a resturant application that stores a list of delicious sandwiches that their customers should try. Start off by adding a cheeseburger, hamburger or any other type of sandwich and you can choose to either save it for later, or devour it now!
 
@@ -16,22 +18,22 @@ Once you have installed all required packages using the previous steps, then you
 
 <hr>
 
+### __Link To Website__
+https://cweat-a-burger.herokuapp.com
+
+<hr>
+
 ### __License__ MIT
 
 <hr>
 
 ### __How To Contribute__
-N/A At this time
+Open a pull request with the feature or the contribution that you would like to add or modify/fix, and i'll integrate it!
 
 <hr>
 
 ### __How To Run Tests__
-N/A
-
-<hr>
-
-### __Frequently Asked Questions__
-N/A
+No tests have been developed for this application.
 
 <hr>
 

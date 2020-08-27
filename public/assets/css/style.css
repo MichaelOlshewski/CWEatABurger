@@ -1,9 +1,14 @@
 .text-center {
     text-align: center;
+    margin-top: 10px;
 }
 
 .center-content {
     margin: 0 auto;
     margin-right: auto;
     margin-left: auto;
+}
+
+ul {
+    list-style-type: none;
 }
